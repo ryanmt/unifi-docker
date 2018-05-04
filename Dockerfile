@@ -32,10 +32,9 @@ RUN apt-get update \
 # Install Ubiquiti UniFi Controller
 RUN groupadd -g 750 -o unifi \
     && useradd -u 750 -o -g unifi -M unifi \
-    && echo "deb https://www.ubnt.com/downloads/unifi/debian stable ubiquiti" > /etc/apt/sources.list.d/ubiquiti-unifi.list \
+    && curl https://dl.ubnt.com/unifi/5.9.26-25460f7409/unifi_sysvinit_all.deb -o unifi.deb \
     && apt-get update \
-    && apt-get install -y --no-install-recommends \
-        unifi \
+    && apt-get install -y --no-install-recommends ./unifi.deb \
     && apt-get clean -qy \
     && rm -rf /var/lib/apt/lists/* \
     && find /usr/lib/unifi/dl/firmware -mindepth 1 \! -name bundles.json -delete

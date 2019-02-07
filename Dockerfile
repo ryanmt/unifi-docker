@@ -32,7 +32,7 @@ RUN apt-get update \
 # Install Ubiquiti UniFi Controller
 RUN groupadd -g 750 -o unifi \
     && useradd -u 750 -o -g unifi -M unifi \
-    && curl https://dl.ubnt.com/unifi/5.10.10-20316752b4/unifi_sysvinit_all.deb -o unifi.deb \
+    && curl https://dl.ubnt.com/unifi/5.10.12/unifi_sysvinit_all.deb -o unifi.deb \
     && apt-get update \
     && apt-get install -y --no-install-recommends ./unifi.deb \
     && apt-get clean -qy \
